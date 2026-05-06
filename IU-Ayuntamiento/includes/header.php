@@ -1,3 +1,8 @@
+<?php
+if (sesssion_status() == PHP_SESSION_NONE){
+    session_start();
+}
+?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -6,11 +11,6 @@
     <title>Gestión de Incidencias - Ayuntamiento</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
-    <style>
-        .autor-p { font-weight: bold; color: #555; }
-        body { display: flex; flex-direction: column; min-height: 100vh; }
-        main { flex: 1; }
-    </style>
 </head>
 <body>
 
@@ -26,8 +26,8 @@
 
                 <div class="navbar-nav ms-auto">
                     <?php
-                    if (isset($_COOKIE['usuario'])) {
-                        echo "<span class='navbar-text me-3'>" . $_COOKIE['usuario'] . " </span>";
+                    if (isset($_SESSION['usuario'])) {
+                        echo "<span class='navbar-text me-3'> Hola, <strong>" . htmlspecialchars($_SESSION['usuario']) . "</strong> (" . htmlspecialchars($_SESSION['rol']) . ")</span>";
                         echo "<a class='btn btn-outline-danger btn-sm' href='logout.php'>Cerrar Sesión</a>";
                     } else {
                         echo "<a class='btn btn-outline-primary btn-sm' href='login.php'>Inicia Sesión</a>";
