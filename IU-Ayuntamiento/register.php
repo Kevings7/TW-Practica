@@ -1,4 +1,5 @@
 <?php
+session_start();
 //Verificamos si ya existe la cookie para no repetir el proceso
 if (isset($_COOKIE['usuario'])) {
     header('Location: index.php');
@@ -10,7 +11,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
     
     //Validación de seguridad: el nombre es obligatorio
     if (empty($_POST['name'])) {
-        header("Location: contacto.php?error=vacio");
+        header("Location: login.php?error=vacio");
         exit();
     }
 
@@ -31,16 +32,18 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
             'comentario' => $comentario
         ]);
         
-        header("Location: contacto.php?" . $parametros_url);
+        header("Location: login.php?" . $parametros_url);
         exit();
     }
 
     // Preparamos el nombre completo para la sesión
     $fullname = trim($name . " " . $surname);
 
-    // Creamos la cookie "usuario" que dura 1 hora
-    // Esto hará que en el header.php aparezca el nombre del usuario
-    setcookie("usuario", $fullname, time() + 3600, "/"); 
+    // Guardamos los datos en $_SESSION en lugar de usar cookies
+    $_SESSION['usuario'] = $fullname;
+    
+    // Definimos el rol del usuario. En este caso simulamos que entra un usuario normal
+    $_SESSION['rol'] = 'ciudadano';
 
     // Redirigimos al inicio una vez identificado
     header("Location: index.php");
