@@ -1,7 +1,7 @@
 <?php
 session_start();
-//Verificamos si ya existe la cookie para no repetir el proceso
-if (isset($_COOKIE['usuario'])) {
+//Comprobamos si el usuario ya está identificado usando $_SESSION
+if (isset($_SESSION['usuario'])) {
     header('Location: index.php');
     exit();
 }
