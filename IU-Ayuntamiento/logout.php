@@ -1,6 +1,9 @@
 <?php
-// Para borrar la cookie ponemos la fecha la hora de antes
-setcookie("usuario", "", time() - 3600, "/");
+session_start();
+// Borra las variables de sesión
+session_unset();
+// Destruye toda la sesión
+session_destroy();
 
 // Redirigimos al usuario a la página de inicio
 header("Location: index.php");
