@@ -1,5 +1,5 @@
 <?php
-if (sesssion_status() == PHP_SESSION_NONE){
+if (session_status() == PHP_SESSION_NONE){
     session_start();
 }
 ?>
