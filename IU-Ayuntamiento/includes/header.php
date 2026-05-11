@@ -20,8 +20,47 @@ if (session_status() == PHP_SESSION_NONE){
         <nav class="navbar navbar-expand-md bg-body-tertiary border-top border-bottom">
             <div class="container-fluid">
                 <ul class="navbar-nav me-auto">
-                    <li class="nav-item"><a class="nav-link" href="index.php">Vista Pública</a></li>
-                    <li class="nav-item"><a class="nav-link" href="reportar.php">Reportar Incidencia</a></li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.php">Vista Pública</a>
+                    </li>
+
+                    <?php if (!isset($_SESSION['usuario_id'])): ?>
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="login.php">Iniciar sesión</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="register.php">Registrarse</a>
+                        </li>
+
+                    <?php endif; ?>
+
+                    <?php if (isset($_SESSION['rol']) && $_SESSION['rol'] === 'ciudadano'): ?>
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="reportar.php">Reportar Incidencia</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="mis_incidencias.php">Mis incidencias</a>
+                        </li>
+
+                    <?php endif; ?>
+
+                    <?php if (isset($_SESSION['rol']) && $_SESSION['rol'] === 'tecnico'): ?>
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="panel_tecnico.php">Panel técnico</a>
+                        </li>
+
+                    <?php endif; ?>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="contacto.php">Contacto</a>
+                    </li>
+
                 </ul>
 
                 <div class="navbar-nav ms-auto">
