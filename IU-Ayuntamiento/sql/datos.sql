@@ -56,13 +56,13 @@ INSERT INTO prioridades (nombre, descripcion, nivel, color) VALUES
 Barrios y zonas de Algeciras.
 */
 INSERT INTO barrios (nombre, distrito, codigo_postal) VALUES
-('Centro', 'Centro', '11201'),
-('San García', 'Zona sur', '11207'),
-('Getares', 'Zona sur', '11207'),
-('El Rinconcillo', 'Zona norte', '11205'),
-('La Granja', 'Zona oeste', '11206'),
-('Los Pastores', 'Zona oeste', '11206'),
-('La Bajadilla', 'Zona centro', '11203'),
-('El Saladillo', 'Zona norte', '11205'),
-('San Bernabé', 'Zona norte', '11205'),
-('Pelayo', 'Zona rural', '11206');
+('Centro', 'Centro', '18001'),
+('Realejo', 'Centro', '18009'),
+('Albaicín', 'Albaicín', '18010'),
+('Sacromonte', 'Albaicín', '18010'),
+('Zaidín', 'Zaidín', '18007'),
+('Ronda', 'Ronda', '18003'),
+('Chana', 'Chana', '18015'),
+('Beiro', 'Beiro', '18012'),
+('Genil', 'Genil', '18008'),
+('Norte', 'Norte', '18013');
