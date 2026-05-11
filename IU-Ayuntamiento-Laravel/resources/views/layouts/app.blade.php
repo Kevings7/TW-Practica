@@ -21,22 +21,57 @@
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Reportar Incidencia</a>
+                    <a class="nav-link" href="{{ route('incidencias.index') }}">Incidencias</a>
                 </li>
+
+                @auth
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('incidencias.create') }}">Reportar Incidencia</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('incidencias.mine') }}">Mis incidencias</a>
+                    </li>
+
+                    @if(auth()->user()->esTecnico())
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('tecnico.panel') }}">Panel Técnico</a>
+                        </li>
+                    @endif
+                @endauth
 
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('contacto') }}">Contacto</a>
                 </li>
             </ul>
 
-            <div class="navbar-nav ms-auto">
-                <span class="navbar-text">Usuario no identificado</span>
+            <div class="navbar-nav ms-auto align-items-center">
+                @guest
+                    <span class="navbar-text me-3">Usuario no identificado</span>
+                    <a class="nav-link" href="{{ route('login') }}">Login</a>
+                    <a class="nav-link" href="{{ route('register') }}">Registro</a>
+                @else
+                    <span class="navbar-text me-3">
+                        {{ auth()->user()->name }} - {{ auth()->user()->role->nombre }}
+                    </span>
+
+                    <form action="{{ route('logout') }}" method="POST">
+                        @csrf
+                        <button class="btn btn-outline-danger btn-sm" type="submit">Cerrar sesión</button>
+                    </form>
+                @endguest
             </div>
         </div>
     </nav>
 </header>
 
 <main class="container my-4">
+    @if(session('success'))
+        <div class="alert alert-success">
+            {{ session('success') }}
+        </div>
+    @endif
+
     @yield('content')
 </main>
 
