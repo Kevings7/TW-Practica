@@ -1,0 +1,202 @@
+/* ==========================================================================
+   CONFIGURACIÓN INICIAL: COLORES Y VARIABLES
+   ========================================================================== */
+:root {
+    --primary-color: #1e3a8a;      /* Azul oscuro para la identidad del Ayuntamiento */
+    --secondary-color: #2563eb;    /* Azul más vivo para botones y elementos activos */
+    --bg-main: #f1f5f9;            /* Fondo gris claro para dar contraste a las tarjetas */
+    --text-dark: #1e293b;          /* Color principal para los textos */
+}
+
+/* Aplicamos el fondo grisáceo suave a toda la aplicación */
+body {
+    background-color: var(--bg-main) !important; /* El !important fuerza a pisar los estilos de Bootstrap */
+    color: var(--text-dark);
+}
+
+
+/* ==========================================================================
+   MENÚ LATERAL IZQUIERDO (CATEGORÍAS)
+   ========================================================================== */
+
+/* Cabecera del menú lateral */
+.list-group-item-dark {
+    background-color: var(--primary-color) !important;
+    border-color: var(--primary-color) !important;
+    color: #ffffff !important;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    padding: 1rem 1.25rem !important;
+}
+
+/* Cada uno de los enlaces de las categorías */
+.list-group-item-action {
+    color: #475569 !important;
+    font-weight: 600;
+    font-size: 0.95rem;
+    border-color: #e2e8f0 !important;
+    transition: all 0.2s ease-in-out !important; /* Animación para que el cambio no sea brusco */
+}
+
+/* Comportamiento cuando pasas el cursor por encima de una categoría */
+.list-group-item-action:hover {
+    background-color: #eff6ff !important;
+    color: var(--secondary-color) !important;
+    padding-left: 1.5rem !important; /* Desplaza el texto a la derecha como efecto visual */
+}
+
+
+/* ==========================================================================
+   TARJETAS DE INCIDENCIAS
+   ========================================================================== */
+
+/* Caja principal de cada incidencia */
+.card {
+    background-color: #ffffff !important;
+    border: 1px solid #e2e8f0 !important;
+    border-radius: 12px !important; /* Bordes redondeados más modernos */
+    transition: transform 0.2s ease, box-shadow 0.2s ease !important;
+}
+
+/* Efecto de elevación al poner el ratón sobre la tarjeta */
+.card:hover {
+    transform: translateY(-4px) !important;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08) !important; /* Añade una sombra sutil de fondo */
+}
+
+.card-title {
+    color: var(--primary-color);
+    font-weight: 700;
+}
+
+
+/* ==========================================================================
+   AVISO DE "NO HAY INCIDENCIAS"
+   ========================================================================== */
+
+/* Diseñamos una caja enmarcada para que el texto suelto no quede plano */
+section.col-md-9 > .row > p {
+    background-color: #ffffff;
+    border: 1px dashed #cbd5e1; /* Borde discontinuo */
+    border-left: 4px solid #94a3b8; /* Línea gruesa a la izquierda para destacar */
+    padding: 1.5rem;
+    border-radius: 8px;
+    color: #64748b;
+    font-size: 1rem;
+    font-style: italic;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+}
+
+
+/* ==========================================================================
+   BOTONES
+   ========================================================================== */
+
+/* Estilo del botón "Ver detalle" */
+.btn-outline-primary {
+    border-color: var(--secondary-color) !important;
+    color: var(--secondary-color) !important;
+    font-weight: 600;
+    border-radius: 6px !important;
+}
+
+/* Relleno del botón cuando pasas el cursor */
+.btn-outline-primary:hover {
+    background-color: var(--secondary-color) !important;
+    border-color: var(--secondary-color) !important;
+    color: #ffffff !important;
+}
+
+
+/* ==========================================================================
+   BARRA DE NAVEGACIÓN SUPERIOR
+   ========================================================================== */
+
+/* Contenedor horizontal superior blanco */
+.navbar, nav {
+    background-color: #ffffff !important;
+    border-bottom: 2px solid #e2e8f0 !important;
+    padding: 0.75rem 2rem !important;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+}
+
+/* Enlaces principales: Vista Pública, Incidencias, Contacto... */
+nav a, .nav-link {
+    color: #475569 !important;
+    font-weight: 600 !important;
+    font-size: 0.95rem;
+    transition: color 0.2s !important;
+}
+
+nav a:hover, .nav-link:hover {
+    color: #2563eb !important;
+}
+
+/* Texto de la derecha (Usuario no identificado o nombre de la sesión) */
+.navbar-text, nav div:last-child {
+    font-size: 0.9rem;
+    color: #64748b !important;
+    font-weight: 500;
+}
+
+
+/* ==========================================================================
+   BANNER INSTITUCIONAL CENTRAL
+   ========================================================================== */
+
+/* Bloque azul destacado de bienvenida */
+.jumbotron-custom {
+    background: linear-gradient(135deg, #1e3a8a 0%, #1d4ed8 100%); /* Degradado moderno en diagonal */
+    color: #ffffff;
+    padding: 2.5rem;
+    border-radius: 12px;
+    margin-bottom: 2rem;
+    box-shadow: 0 4px 15px rgba(30, 58, 138, 0.15);
+}
+
+.jumbotron-custom h2 {
+    color: #ffffff !important;
+    font-size: 1.8rem !important;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+}
+
+.jumbotron-custom p {
+    color: #93c5fd; /* Color azul más clarito para crear jerarquía visual */
+    font-size: 1rem;
+    margin-bottom: 0;
+}
+
+
+/* ==========================================================================
+   PIE DE PÁGINA (FOOTER)
+   ========================================================================== */
+
+/* Franja oscura abajo del todo */
+footer {
+    background-color: #0f172a !important;
+    color: #94a3b8 !important;
+    padding: 2rem 1rem !important;
+    margin-top: 4rem !important;
+    border-top: 3px solid #1e3a8a !important;
+    text-align: center;
+}
+
+footer p {
+    font-size: 0.9rem;
+    margin-bottom: 0.75rem !important;
+}
+
+footer a {
+    color: #f8fafc !important;
+    text-decoration: none !important;
+    font-weight: 600;
+    margin: 0 1rem;
+    font-size: 0.9rem;
+    transition: color 0.2s !important;
+}
+
+footer a:hover {
+    color: #3b82f6 !important;
+    text-decoration: underline !important; /* Añade subrayado clásico al pasar el ratón */
+}
