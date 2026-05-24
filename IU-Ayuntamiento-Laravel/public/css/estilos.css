@@ -1,202 +1,502 @@
 /* ==========================================================================
-   CONFIGURACIÓN INICIAL: COLORES Y VARIABLES
+   DISEÑO PREMIUM - GESTIÓN DE INCIDENCIAS URBANAS
    ========================================================================== */
+
 :root {
-    --primary-color: #1e3a8a;      /* Azul oscuro para la identidad del Ayuntamiento */
-    --secondary-color: #2563eb;    /* Azul más vivo para botones y elementos activos */
-    --bg-main: #f1f5f9;            /* Fondo gris claro para dar contraste a las tarjetas */
-    --text-dark: #1e293b;          /* Color principal para los textos */
+    --primary-color: #1e3a8a;
+    --secondary-color: #2563eb;
+    --accent-color: #38bdf8;
+
+    --bg-main: #eef4fb;
+    --bg-card: #ffffff;
+
+    --text-dark: #0f172a;
+    --text-muted: #64748b;
+
+    --border-soft: #dbe4f0;
+    --shadow-soft: 0 10px 30px rgba(15, 23, 42, 0.08);
+    --shadow-hover: 0 18px 40px rgba(15, 23, 42, 0.14);
+
+    --radius-md: 12px;
+    --radius-lg: 18px;
 }
 
-/* Aplicamos el fondo grisáceo suave a toda la aplicación */
 body {
-    background-color: var(--bg-main) !important; /* El !important fuerza a pisar los estilos de Bootstrap */
+    min-height: 100vh;
+    background:
+        radial-gradient(circle at top left, rgba(37, 99, 235, 0.16), transparent 32rem),
+        linear-gradient(180deg, #f8fafc 0%, var(--bg-main) 100%) !important;
     color: var(--text-dark);
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
 }
 
+/* Título principal */
+h1 {
+    font-weight: 800;
+    letter-spacing: -1px;
+    color: var(--text-dark);
+    margin-bottom: 1rem;
+}
+
+h2, h3 {
+    font-weight: 750;
+    letter-spacing: -0.5px;
+}
 
 /* ==========================================================================
-   MENÚ LATERAL IZQUIERDO (CATEGORÍAS)
+   NAVBAR
    ========================================================================== */
 
-/* Cabecera del menú lateral */
-.list-group-item-dark {
-    background-color: var(--primary-color) !important;
-    border-color: var(--primary-color) !important;
+.navbar,
+nav {
+    max-width: 1200px;
+    margin: 1rem auto 2rem;
+    background: rgba(255, 255, 255, 0.88) !important;
+    backdrop-filter: blur(14px);
+    border: 1px solid rgba(219, 228, 240, 0.9) !important;
+    border-radius: var(--radius-lg);
+    padding: 0.9rem 1.5rem !important;
+    box-shadow: var(--shadow-soft);
+}
+
+nav a,
+.nav-link {
+    color: #475569 !important;
+    font-weight: 700 !important;
+    font-size: 0.95rem;
+    text-decoration: none !important;
+    padding: 0.55rem 0.85rem !important;
+    border-radius: 999px;
+    transition: all 0.2s ease !important;
+}
+
+nav a:hover,
+.nav-link:hover {
+    color: var(--secondary-color) !important;
+    background: #eff6ff;
+    transform: translateY(-1px);
+}
+
+.navbar-text,
+nav div:last-child {
+    color: var(--text-muted) !important;
+    font-weight: 600;
+}
+
+/* ==========================================================================
+   CONTENIDO GENERAL
+   ========================================================================== */
+
+main,
+.container {
+    max-width: 1200px;
+}
+
+main {
+    margin: 0 auto;
+}
+
+section {
+    animation: fadeIn 0.35s ease both;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(8px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ==========================================================================
+   BANNER INSTITUCIONAL
+   ========================================================================== */
+
+.jumbotron-custom {
+    position: relative;
+    overflow: hidden;
+    background:
+        linear-gradient(135deg, rgba(30, 58, 138, 0.96), rgba(37, 99, 235, 0.94)),
+        radial-gradient(circle at top right, rgba(56, 189, 248, 0.45), transparent 16rem);
+    color: #ffffff;
+    padding: 3rem;
+    border-radius: 24px;
+    margin-bottom: 2rem;
+    box-shadow: 0 20px 45px rgba(30, 58, 138, 0.22);
+}
+
+.jumbotron-custom::after {
+    content: "";
+    position: absolute;
+    width: 220px;
+    height: 220px;
+    right: -70px;
+    bottom: -90px;
+    background: rgba(255, 255, 255, 0.12);
+    border-radius: 999px;
+}
+
+.jumbotron-custom h2 {
     color: #ffffff !important;
-    font-weight: 700;
-    letter-spacing: 0.5px;
+    font-size: 2rem !important;
+    font-weight: 850;
+    margin-bottom: 0.6rem;
+}
+
+.jumbotron-custom p {
+    color: #dbeafe;
+    font-size: 1.05rem;
+    margin-bottom: 0;
+}
+
+/* ==========================================================================
+   MENÚ LATERAL
+   ========================================================================== */
+
+.list-group {
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    box-shadow: var(--shadow-soft);
+}
+
+.list-group-item-dark {
+    background:
+        linear-gradient(135deg, var(--primary-color), var(--secondary-color)) !important;
+    border-color: transparent !important;
+    color: #ffffff !important;
+    font-weight: 800;
+    letter-spacing: 0.4px;
     padding: 1rem 1.25rem !important;
 }
 
-/* Cada uno de los enlaces de las categorías */
 .list-group-item-action {
+    background: rgba(255, 255, 255, 0.92) !important;
     color: #475569 !important;
-    font-weight: 600;
+    font-weight: 650;
     font-size: 0.95rem;
-    border-color: #e2e8f0 !important;
-    transition: all 0.2s ease-in-out !important; /* Animación para que el cambio no sea brusco */
+    border-color: var(--border-soft) !important;
+    transition: all 0.2s ease-in-out !important;
 }
 
-/* Comportamiento cuando pasas el cursor por encima de una categoría */
 .list-group-item-action:hover {
-    background-color: #eff6ff !important;
+    background: #eff6ff !important;
     color: var(--secondary-color) !important;
-    padding-left: 1.5rem !important; /* Desplaza el texto a la derecha como efecto visual */
+    padding-left: 1.6rem !important;
 }
-
 
 /* ==========================================================================
-   TARJETAS DE INCIDENCIAS
+   TARJETAS
    ========================================================================== */
 
-/* Caja principal de cada incidencia */
 .card {
-    background-color: #ffffff !important;
-    border: 1px solid #e2e8f0 !important;
-    border-radius: 12px !important; /* Bordes redondeados más modernos */
-    transition: transform 0.2s ease, box-shadow 0.2s ease !important;
+    background: rgba(255, 255, 255, 0.95) !important;
+    border: 1px solid rgba(219, 228, 240, 0.95) !important;
+    border-radius: var(--radius-lg) !important;
+    box-shadow: 0 6px 18px rgba(15, 23, 42, 0.06);
+    transition: all 0.22s ease !important;
+    overflow: hidden;
 }
 
-/* Efecto de elevación al poner el ratón sobre la tarjeta */
 .card:hover {
-    transform: translateY(-4px) !important;
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08) !important; /* Añade una sombra sutil de fondo */
+    transform: translateY(-5px) !important;
+    box-shadow: var(--shadow-hover) !important;
+    border-color: rgba(37, 99, 235, 0.28) !important;
+}
+
+.card-body {
+    padding: 1.35rem !important;
 }
 
 .card-title {
     color: var(--primary-color);
-    font-weight: 700;
+    font-weight: 800;
+    letter-spacing: -0.3px;
 }
 
+.card-text {
+    color: #475569;
+}
 
 /* ==========================================================================
-   AVISO DE "NO HAY INCIDENCIAS"
+   AVISO DE NO HAY INCIDENCIAS
    ========================================================================== */
 
-/* Diseñamos una caja enmarcada para que el texto suelto no quede plano */
 section.col-md-9 > .row > p {
-    background-color: #ffffff;
-    border: 1px dashed #cbd5e1; /* Borde discontinuo */
-    border-left: 4px solid #94a3b8; /* Línea gruesa a la izquierda para destacar */
-    padding: 1.5rem;
-    border-radius: 8px;
-    color: #64748b;
+    width: 100%;
+    background:
+        linear-gradient(135deg, #ffffff, #f8fbff);
+    border: 1px dashed #93c5fd;
+    border-left: 5px solid var(--secondary-color);
+    padding: 2rem;
+    border-radius: var(--radius-lg);
+    color: #475569;
     font-size: 1rem;
-    font-style: italic;
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+    font-weight: 600;
+    box-shadow: var(--shadow-soft);
 }
-
 
 /* ==========================================================================
    BOTONES
    ========================================================================== */
 
-/* Estilo del botón "Ver detalle" */
+.btn,
+.btn-outline-primary,
+.btn-primary {
+    border-radius: 999px !important;
+    font-weight: 750 !important;
+    padding: 0.55rem 1rem !important;
+    transition: all 0.2s ease !important;
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, var(--secondary-color), #1d4ed8) !important;
+    border: none !important;
+    box-shadow: 0 8px 18px rgba(37, 99, 235, 0.24);
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 26px rgba(37, 99, 235, 0.32);
+}
+
 .btn-outline-primary {
     border-color: var(--secondary-color) !important;
     color: var(--secondary-color) !important;
-    font-weight: 600;
-    border-radius: 6px !important;
 }
 
-/* Relleno del botón cuando pasas el cursor */
 .btn-outline-primary:hover {
-    background-color: var(--secondary-color) !important;
+    background: var(--secondary-color) !important;
+    color: #ffffff !important;
+    transform: translateY(-2px);
+}
+
+/* ==========================================================================
+   FORMULARIOS
+   ========================================================================== */
+
+.form-control,
+.form-select {
+    border-radius: var(--radius-md) !important;
+    border: 1px solid var(--border-soft) !important;
+    padding: 0.7rem 0.9rem !important;
+    box-shadow: none !important;
+}
+
+.form-control:focus,
+.form-select:focus {
     border-color: var(--secondary-color) !important;
-    color: #ffffff !important;
+    box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.12) !important;
 }
 
-
-/* ==========================================================================
-   BARRA DE NAVEGACIÓN SUPERIOR
-   ========================================================================== */
-
-/* Contenedor horizontal superior blanco */
-.navbar, nav {
-    background-color: #ffffff !important;
-    border-bottom: 2px solid #e2e8f0 !important;
-    padding: 0.75rem 2rem !important;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.02);
-}
-
-/* Enlaces principales: Vista Pública, Incidencias, Contacto... */
-nav a, .nav-link {
-    color: #475569 !important;
-    font-weight: 600 !important;
-    font-size: 0.95rem;
-    transition: color 0.2s !important;
-}
-
-nav a:hover, .nav-link:hover {
-    color: #2563eb !important;
-}
-
-/* Texto de la derecha (Usuario no identificado o nombre de la sesión) */
-.navbar-text, nav div:last-child {
-    font-size: 0.9rem;
-    color: #64748b !important;
-    font-weight: 500;
-}
-
-
-/* ==========================================================================
-   BANNER INSTITUCIONAL CENTRAL
-   ========================================================================== */
-
-/* Bloque azul destacado de bienvenida */
-.jumbotron-custom {
-    background: linear-gradient(135deg, #1e3a8a 0%, #1d4ed8 100%); /* Degradado moderno en diagonal */
-    color: #ffffff;
-    padding: 2.5rem;
-    border-radius: 12px;
-    margin-bottom: 2rem;
-    box-shadow: 0 4px 15px rgba(30, 58, 138, 0.15);
-}
-
-.jumbotron-custom h2 {
-    color: #ffffff !important;
-    font-size: 1.8rem !important;
+label,
+.form-label {
     font-weight: 700;
-    margin-bottom: 0.5rem;
+    color: #334155;
 }
-
-.jumbotron-custom p {
-    color: #93c5fd; /* Color azul más clarito para crear jerarquía visual */
-    font-size: 1rem;
-    margin-bottom: 0;
-}
-
 
 /* ==========================================================================
-   PIE DE PÁGINA (FOOTER)
+   TABLAS
    ========================================================================== */
 
-/* Franja oscura abajo del todo */
+.table {
+    background: #ffffff;
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    box-shadow: var(--shadow-soft);
+}
+
+.table thead {
+    background: #eff6ff;
+    color: var(--primary-color);
+}
+
+.table th {
+    font-weight: 800;
+}
+
+.table td,
+.table th {
+    padding: 1rem !important;
+    vertical-align: middle;
+}
+
+/* ==========================================================================
+   ALERTAS
+   ========================================================================== */
+
+.alert {
+    border-radius: var(--radius-lg) !important;
+    border: none !important;
+    box-shadow: var(--shadow-soft);
+    font-weight: 650;
+}
+
+/* ==========================================================================
+   FOOTER
+   ========================================================================== */
+
 footer {
-    background-color: #0f172a !important;
+    max-width: 1200px;
+    margin: 5rem auto 1.5rem !important;
+    background:
+        linear-gradient(135deg, #0f172a, #111827) !important;
     color: #94a3b8 !important;
-    padding: 2rem 1rem !important;
-    margin-top: 4rem !important;
-    border-top: 3px solid #1e3a8a !important;
+    padding: 2.25rem 1rem !important;
+    border-radius: 24px;
+    border-top: 3px solid var(--secondary-color) !important;
     text-align: center;
+    box-shadow: var(--shadow-soft);
 }
 
 footer p {
-    font-size: 0.9rem;
-    margin-bottom: 0.75rem !important;
+    font-size: 0.92rem;
+    margin-bottom: 0.85rem !important;
 }
 
 footer a {
     color: #f8fafc !important;
     text-decoration: none !important;
-    font-weight: 600;
+    font-weight: 750;
     margin: 0 1rem;
-    font-size: 0.9rem;
-    transition: color 0.2s !important;
+    font-size: 0.92rem;
+    transition: all 0.2s ease !important;
 }
 
 footer a:hover {
-    color: #3b82f6 !important;
-    text-decoration: underline !important; /* Añade subrayado clásico al pasar el ratón */
+    color: var(--accent-color) !important;
+}
+
+/* ==========================================================================
+   RESPONSIVE
+   ========================================================================== */
+
+@media (max-width: 768px) {
+    .navbar,
+    nav {
+        margin: 0.75rem;
+        padding: 1rem !important;
+        border-radius: 16px;
+    }
+
+    .jumbotron-custom {
+        padding: 2rem;
+        border-radius: 18px;
+    }
+
+    .jumbotron-custom h2 {
+        font-size: 1.55rem !important;
+    }
+
+    footer {
+        margin-left: 0.75rem !important;
+        margin-right: 0.75rem !important;
+        border-radius: 18px;
+    }
+}
+
+.contact-page {
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.contact-hero {
+    position: relative;
+    overflow: hidden;
+    background: linear-gradient(135deg, #1e3a8a, #2563eb);
+    color: white;
+    padding: 3rem;
+    border-radius: 24px;
+    box-shadow: 0 20px 45px rgba(30, 58, 138, 0.22);
+    margin-bottom: 2rem;
+}
+
+.contact-hero::after {
+    content: "";
+    position: absolute;
+    width: 220px;
+    height: 220px;
+    right: -70px;
+    bottom: -90px;
+    background: rgba(255, 255, 255, 0.12);
+    border-radius: 999px;
+}
+
+.contact-badge {
+    display: inline-block;
+    background: rgba(255, 255, 255, 0.18);
+    color: #dbeafe;
+    padding: 0.45rem 0.85rem;
+    border-radius: 999px;
+    font-weight: 700;
+    margin-bottom: 1rem;
+}
+
+.contact-hero h2 {
+    font-size: 2.4rem;
+    font-weight: 850;
+    margin-bottom: 0.75rem;
+}
+
+.contact-hero p {
+    max-width: 650px;
+    color: #dbeafe;
+    font-size: 1.05rem;
+    margin-bottom: 0;
+}
+
+.contact-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.25rem;
+}
+
+.contact-card {
+    background: white;
+    border: 1px solid #dbe4f0;
+    border-radius: 20px;
+    padding: 2rem;
+    box-shadow: 0 10px 30px rgba(15, 23, 42, 0.08);
+    transition: all 0.2s ease;
+}
+
+.contact-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 18px 40px rgba(15, 23, 42, 0.14);
+}
+
+.contact-icon {
+    width: 52px;
+    height: 52px;
+    display: grid;
+    place-items: center;
+    background: #eff6ff;
+    border-radius: 16px;
+    font-size: 1.6rem;
+    margin-bottom: 1rem;
+}
+
+.contact-card h3 {
+    color: #1e3a8a;
+    font-weight: 800;
+    margin-bottom: 0.5rem;
+}
+
+.contact-card p {
+    color: #475569;
+    font-weight: 650;
+    margin-bottom: 0;
+}
+
+@media (max-width: 768px) {
+    .contact-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .contact-hero {
+        padding: 2rem;
+    }
 }

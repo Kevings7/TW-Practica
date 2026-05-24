@@ -51,7 +51,7 @@
                                 </a>
                             </div>
 
-                            <span class="badge bg-warning text-dark">
+                            <span class="badge {{ strtolower(trim($incidencia->estado->nombre)) === 'solucionado' ? 'bg-success' : 'bg-warning text-dark' }}">
                                 {{ $incidencia->estado->nombre }}
                             </span>
                         </div>

@@ -9,7 +9,7 @@
         <div class="card-header d-flex justify-content-between align-items-center">
             <h4 class="mb-0">{{ $incidencia->titulo }}</h4>
 
-            <span class="badge bg-warning text-dark">
+            <span class="badge {{ $incidencia->estado->nombre === 'Solucionado' ? 'bg-success' : 'bg-warning text-dark' }}">
                 {{ $incidencia->estado->nombre }}
             </span>
         </div>
